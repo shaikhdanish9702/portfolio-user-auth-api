@@ -14,7 +14,7 @@ class AuthJwt {
     }
 
     try {
-      const decoded = jwt.verify(token, process.env.auth.secret)
+      const decoded = jwt.verify(token, process.env.JWT_SECRET)
       req.userId = decoded.id
       logger.info(`Token verified successfully for userId: ${req.userId} - IP: ${req.ip}`)
       next()
