@@ -7,7 +7,11 @@ const router = express.Router()
 
 router.get('/api/test/all', accessController.allAccess)
 
-router.get('/api/test/user', [authJwt.verifyToken], accessController.userBoard)
+router.get(
+  '/api/test/user',
+  [authJwt.verifyToken],
+  accessController.userBoard.bind(accessController)
+)
 
 router.get(
   '/api/test/mod',

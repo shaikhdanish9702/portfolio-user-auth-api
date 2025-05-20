@@ -2,6 +2,9 @@ const db = require('../models/index')
 const logger = require('../utils/logger')
 const User = db.user
 class AccessController {
+  // eslint-disable-next-line no-useless-constructor
+  constructor() {}
+
   async getUserById(userId) {
     try {
       const user = await User.findByPk(userId)
@@ -62,7 +65,9 @@ class AccessController {
   // User role access - returns user profile + user-specific data
   async userBoard(req, res) {
     const user = await this.validateRole(req, res, 'user')
-    if (!user) return
+    if (!user) {
+      return
+    }
 
     try {
       // Fetch user profile details or user-related data

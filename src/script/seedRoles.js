@@ -1,7 +1,6 @@
 // seedRoles.js
 require('dotenv').config()
 const Role = require('../models').role // Adjust path if needed
-const sequelize = require('../models').Sequelize // Include if sequelize sync is needed
 const logger = require('../utils/logger')
 
 async function initial() {
@@ -22,8 +21,8 @@ async function initial() {
   } catch (error) {
     logger.error('Error seeding roles:', error)
   } finally {
-    await sequelize.close()
     logger.info('Database connection closed.')
+    process.exit(1)
   }
 }
 

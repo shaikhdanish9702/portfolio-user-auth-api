@@ -39,6 +39,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('user_roles')
     await queryInterface.dropTable('users')
   }
 }
